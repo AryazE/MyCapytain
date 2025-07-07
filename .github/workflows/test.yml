@@ -22,6 +22,11 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -r requirements.txt
+    - name: Instrument for DyLin
+      uses: AryazE/auto-dylin/instrument@main
     - name: Run Tests
       run: |
         python setup.py test
+    - name: Report findings
+      if: always()
+      uses: AryazE/auto-dylin/report@main
